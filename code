@@ -1,0 +1,51 @@
+class Artwork:
+    def __init__(self, title, artist, date_of_creation, historical_significance, exhibition_location):
+        self.title = title
+        self.artist = artist
+        self.date_of_creation = date_of_creation
+        self.historical_significance = historical_significance
+        self.exhibition_location = exhibition_location
+
+
+class Exhibition:
+    def __init__(self, name, duration, location):
+        self.name = name
+        self.duration = duration
+        self.location = location
+
+    def ticket_price(self, visitor):
+        # Implement ticket pricing logic here based on visitor demographics
+        pass
+
+
+class Ticket:
+    def __init__(self, price, exhibition):
+        self.price = price
+        self.exhibition = exhibition
+
+
+class Visitor:
+    def __init__(self, name, age, nationality_id):
+        self.name = name
+        self.age = age
+        self.nationality_id = nationality_id
+
+
+class TicketingSystem:
+    def __init__(self):
+        self.artworks = []
+        self.exhibitions = []
+        self.tickets = []
+        self.visitors = []
+
+    def add_artwork(self, artwork):
+        self.artworks.append(artwork)
+
+    def add_exhibition(self, exhibition):
+        self.exhibitions.append(exhibition)
+
+    def sell_ticket(self, visitor, exhibition):
+        ticket_price = exhibition.ticket_price(visitor)
+        ticket = Ticket(ticket_price, exhibition)
+        self.tickets.append(ticket)
+        return ticket
